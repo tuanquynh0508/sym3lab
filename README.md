@@ -1,2 +1,4 @@
-# sym3lab
-Symfony 3 laboratories
+xxx3
+====
+
+A Symfony project created on February 24, 2016, 1:08 pm.
