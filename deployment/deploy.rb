@@ -12,12 +12,24 @@ set :format, 				:pretty
 set :log_level, 			:debug
 set :keep_releases, 		5
 
+##############################################
+#SUPPORT FOR SYMFONY 3
+set :symfony_console_path, "bin/console"
+set :log_path,              "var/logs"
+set :cache_path,            "var/cache"
+set :sessions_path,		   "var/sessions"
+#set :app_config_file,       fetch(:app_path) + "/config/parameters.yml"
+##############################################
+
 # Controllers to clear
 #set :controllers_to_clear, ["app_*.php"]
 
 #set :linked_files, 			%w{app/config/parameters.yml}
-set :writable_dirs, 		%w{var/cache var/logs var/sessions vendor}
-set :linked_dirs, 			%w{var/cache var/logs var/sessions vendor}
+set :file_permissions_paths,    [fetch(:log_path), fetch(:cache_path), fetch(:sessions_path)]
+set :writable_dirs, 		[fetch(:log_path), fetch(:cache_path), fetch(:sessions_path)]
+#fetch(:web_path) + "/uploads"
+set :linked_dirs,           [fetch(:log_path), "vendor"]
+#set :linked_files,          [fetch(:release_path) + "app/config/parameters.yml"]
 set :file_permissions_users,['apache']
 set :webserver_user,        "apache"
 set :permission_method,     :acl
