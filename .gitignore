@@ -7,8 +7,10 @@
 # Cache and logs (Symfony3)
 /var/cache/*
 /var/logs/*
+/var/sessions/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
+!var/sessions/.gitkeep
 
 # Parameters
 /app/config/parameters.yml
@@ -28,6 +30,10 @@
 /web/images/
 /web/css/compiled/
 /web/js/compiled/
+!/web/js/index.html
+!/web/css/index.html
+!/web/images/index.html
+!/web/uploads/index.html
 
 # Assets managed by Bower
 /web/assets/vendor/
@@ -41,7 +47,7 @@
 
 # Composer PHAR
 #/composer.phar
-/composer.lock
+#/composer.lock
 
 #netbeans
 /nbproject/

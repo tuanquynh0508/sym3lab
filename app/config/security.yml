@@ -2,10 +2,14 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
+    encoders:
+        TuanQuynh\UserBundle\Entity\User: bcrypt
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        our_db_provider:
+            entity:
+                class: TuanQuynhUserBundle:User
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,7 +18,9 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            pattern:    ^/
+            http_basic: ~
+            provider: our_db_provider
             # activate different ways to authenticate
 
             # http_basic: ~
