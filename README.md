@@ -46,4 +46,7 @@ php bin/console doctrine:migrations:diff --env=dev
 php bin/console doctrine:migrations:migrate 20160321225157 --env=dev
 
 php bin/console generate:bundle --namespace=TuanQuynh/UserBundle --dir=src --format=annotation --no-interaction
+
+php bin/console doctrine:generate:entities AppBundle/Entity/User
+php bin/console doctrine:schema:update --force
 ```
