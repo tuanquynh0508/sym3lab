@@ -7,8 +7,10 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        webservice:
-            id: tuan_quynh_user.security.webservice_user_provider
+        tuan_quynh_user_db:
+            entity:
+                class: TuanQuynhUserBundle:User
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -18,6 +20,12 @@ security:
 
         main:
             anonymous: ~
+
+        main:
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -25,16 +33,6 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-        login:
-            pattern:  ^/api/login
-            stateless: true
-            anonymous: true
-            webservice_login:
-                check_path: /api/login_check
-                require_previous_session: false
-                username_parameter: username
-                password_parameter: password
-
     access_control:
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_ADMIN }

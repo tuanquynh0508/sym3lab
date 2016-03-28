@@ -6,3 +6,10 @@ app:
 tuanquynh_user:
     resource: "@TuanQuynhUserBundle/Resources/config/routing.yml"
     prefix:   /
+
+# tuanquynh_user_login:
+#     path: /login_check
+#     #defaults: {_format: json}
+# tuanquynh_user_logout:
+#     path: /logout
+#     #defaults: {_format: json}
