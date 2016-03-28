@@ -7,10 +7,8 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        tuan_quynh_user_db:
-            entity:
-                class: TuanQuynhUserBundle:User
-                property: username
+        webservice:
+            id: tuan_quynh_user.security.webservice_user_provider
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -20,12 +18,12 @@ security:
 
         main:
             anonymous: ~
-
-        main:
-            anonymous: ~
-            form_login:
-                login_path: login
-                check_path: login
+            logout: ~
+            guard:
+                authenticators:
+                    - tuan_quynh_user.security.form_login_authenticator
+                # by default, use the start() function from FormLoginAuthenticator
+                entry_point: tuan_quynh_user.security.form_login_authenticator
             # activate different ways to authenticate
 
             # http_basic: ~
